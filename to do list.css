@@ -1,0 +1,101 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+#task-input {
+  width: 50%;
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+}
+
+#add-task-btn {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#add-task-btn:hover {
+  background-color: #3e8e41;
+}
+
+#task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#task-list li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+#task-list li:last-child {
+  border-bottom: none;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #ccc;
+}
+/* Style the delete button */
+.delete-btn {
+  background-color: #FF69B4;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #FF3737;
+}
+
+/* Style the completed counter */
+#completed-counter {
+  font-size: 18px;
+  color: #666;
+  margin-top: 20px;
+}
+/* Style the filter buttons */
+#filter-buttons {
+  margin-top: 20px;
+}
+
+#filter-buttons button {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#filter-buttons button:hover {
+  background-color: #3e8e41;
+}
+/* Style the clear and sort buttons */
+#clear-button, #sort-button {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#clear-button:hover, #sort-button:hover {
+  background-color: #3e8e41;
+}
+
+/* Style the incomplete counter */
+#incomplete-counter {
+  font-size: 18px;
+  color: #666;
+  margin-top: 20px;
+}

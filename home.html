@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Website</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+<!-- HTML -->
+<nav id="menubar">
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+    <li id="signin-signup">
+      <a href="#" id="signin-link">Sign in</a>
+      <a href="#" id="signup-link">Sign up</a>
+      <form id="signin-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <input type="submit" value="Sign in">
+      </form>
+      <form id="signup-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password"><br><br>
+        <input type="submit" value="Sign up">
+      </form>
+    </li>
+  </ul>
+</nav>
+
+<!-- CSS -->
+#menubar {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+#menubar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+#menubar li {
+  margin-right: 20px;
+}
+
+#signin-signup {
+  position: relative;
+}
+
+#signin-form, #signup-form {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  display: none;
+}
+
+#signin-link, #signup-link {
+  cursor: pointer;
+}
+
+#signin-link:hover, #signup-link:hover {
+  color: #ccc;
+}
+
+/* JavaScript */
+document.getElementById("signin-link").addEventListener("click", function(event) {
+  event.preventDefault();
+  document.getElementById("signin-form").style.display = "block";
+});
+
+document.getElementById("signup-link").addEventListener("click", function(event) {
+  event.preventDefault();
+  document.getElementById("signup-form").style.display = "block";
+});
+
+document.getElementById("signin-form").addEventListener("submit", function(event) {
+  event.preventDefault();
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  // Retrieve the user data from local storage
+  const users = JSON.parse(localStorage.getItem("users"));
+
+  // Check if the user exists
+  const user = users.find(function(user) {
+    return user.username === username && user.password === password;
+  });
+
+  if (!user) {
+    document.getElementById("signin-error").textContent = "Invalid username or password";
+    return;
+  }
+
+  // Display a success message
+  document.getElementById("signin-error").textContent = "Sign in successful!";
+});
+
+document.getElementById("signup-form").addEventListener("submit", function(event) {
+  event.preventDefault();
+  const username = document.getElementById("username").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const confirmPassword = document.getElementById("confirm-password").value;
+
+  if (password !== confirmPassword) {
+    document.getElementById("signup-error").textContent = "Passwords do not match";
+    return;
+  }
+
+
+     
+
+<!-- External signin form -->
+<div id="signin-form-container" style="display: none;">
+  <form id="signin-form" action="signin.php" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"><br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br><br>
+    <input type="submit" value="Sign in">
+    <p id="signin-error"></p>
+  </form>
+</div>
+
+<!-- External signup form -->
+<div id="signup-form-container" style="display: none;">
+  <form id="signup-form" action="signup.php" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"><br><br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email"><br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br><br>
+    <label for="confirm-password">Confirm Password:</label>
+    <input type="password" id="confirm-password" name="confirm-password"><br><br>
+    <input type="submit" value="Sign up">
+    <p id="signup-error"></p>
+  </form>
+</div>
+
+
+
+
+   
+    <main>
+        <h1>Products</h1>
+        <ul id="product-list">
+            <li>
+                <img src="product1.jpg" alt="Product 1">
+                <h2>Product 1</h2>
+                <p>Price: $10.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </li>
+            <li>
+                <img src="product2.jpg" alt="Product 2">
+                <h2>Product 2</h2>
+                <p>Price: $9.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </li>
+            <li>
+                <img src="product3.jpg" alt="Product 3">
+                <h2>Product 3</h2>
+                <p>Price: $12.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </li>
+        </ul>
+        <div id="cart-container">
+            <h2>Shopping Cart</h2>
+            <ul id="cart-list">
+                <!-- cart items will be displayed here -->
+            </ul>
+            <p id="cart-total">Total: $0.00</p>
+            <button id="checkout-btn">Checkout</button>
+        </div>
+		<!-- Signup Form -->
+<div id="signup-form">
+  <h2>Sign up</h2>
+  <form>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"><br><br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email"><br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br><br>
+    <label for="confirm-password">Confirm Password:</label>
+    <input type="password" id="confirm-password" name="confirm-password"><br><br>
+    <input type="submit" value="Sign up">
+  </form>
+  <p id="signup-error"></p>
+</div>
+
+
+	<!-- HTML -->
+<nav id="menubar">
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+    <li id="signin-signup">
+      <a href="#" id="signin-link">Sign in</a>
+      <a href="#" id="signup-link">Sign up</a>
+      <form id="signin-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <input type="submit" value="Sign in">
+      </form>
+      <form id="signup-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password"><br><br>
+        <input type="submit" value="Sign up">
+     
+</body>
+</html>
